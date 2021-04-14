@@ -1,0 +1,1 @@
+![Certificate](Certificate-C2_Improving_Deep_Neural_Networks_Hyperparameter_Tuning_Regularization_and_Optimization.jpg)
