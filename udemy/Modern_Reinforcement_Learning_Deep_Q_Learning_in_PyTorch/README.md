@@ -6,17 +6,17 @@
 ### Syllabus
 
 **Section 1**
-1. What You Will Learn In This Course  
-2. Required Background, software, and hardware  
-3. How to Succeed in this Course  
+- 1. What You Will Learn In This Course  
+- 2. Required Background, software, and hardware  
+- 3. How to Succeed in this Course  
 
 **Section 2**
-4. Agents, Environments, and Actions  
-5. Markov Decision Processes  
-6. Value Functions, Action Value Functions, and the Bellman Equation  
-7. Model Free vs. Model Based Learning  
-8. The Explore-Exploit Dilemma  
-9. Temporal Difference Learning  
+- 4. Agents, Environments, and Actions  
+- 5. Markov Decision Processes  
+- 6. Value Functions, Action Value Functions, and the Bellman Equation  
+- 7. Model Free vs. Model Based Learning  
+- 8. The Explore-Exploit Dilemma  
+- 9. Temporal Difference Learning  
 
 ****
 
