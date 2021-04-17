@@ -18,6 +18,14 @@
 - 8. The Explore-Exploit Dilemma  
 - 9. Temporal Difference Learning  
 
+**Section 3**
+- 10. Dealing with Continuous State Spaces with Deep Neural Networks  
+- 11. Naive Deep Q Learning in Code: Step 1 - Coding the Deep Q Network  
+- 13. Naive Deep Q Learning in Code: Step 3 - Coding the Main Loop and Learning  
+- 14. Naive Deep Q Learning in Code: Step 4 - Verifying the Functionality of Our Code  
+- 15. Naive Deep Q Learning in Code: Step 5 - Analyzing Our Agent's Performance  
+- 16. Dealing with Screen Images with Convolutional Neural Networks  
+
 ****
 
 ### Software Requirements
