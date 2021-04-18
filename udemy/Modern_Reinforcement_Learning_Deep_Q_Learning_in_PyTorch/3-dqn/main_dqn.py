@@ -1,13 +1,16 @@
 import numpy as np
 from dqn_agent import DQNAgent
 from utils import make_env, plot_learning_curve
+import time
 
 
 if __name__ == "__main__":
+    start_time = time.time()
+
     env = make_env('PongNoFrameskip-v4')
     best_score = -np.inf
     load_checkpoint = False
-    n_games = 500
+    n_games = 10
     agent = DQNAgent(
         gamma=0.99,
         epsilon=1.0,
@@ -18,7 +21,7 @@ if __name__ == "__main__":
         eps_min=0.1,
         batch_size=32,
         update_target_freq=1000,
-        eps_dec=1e5,
+        eps_dec=1e-5,
         chkpt_dir='models/',
         algo='DQN',
         env_name='PongNoFrameskip-v4'
@@ -60,6 +63,7 @@ if __name__ == "__main__":
         print('Best score: %.1f' % best_score)
         print('Epsilon: %.2f' % agent.epsilon)
         print('Steps:', n_steps)
+        print("--- %s seconds ---" % round((time.time() - start_time), 2))
 
         if avg_score > best_score:
             if not load_checkpoint:
