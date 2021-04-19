@@ -6,6 +6,7 @@
 
 - Part 1: PyTorch Basics: Tensors & Gradients  
 - Part 2: Gradient Descent and Linear Regression with PyTorch  
+- Part 3: Working with Images & Logistic Regression in PyTorch  
 
 ****
 
