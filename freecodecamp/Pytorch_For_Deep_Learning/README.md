@@ -4,8 +4,8 @@
 
 ### Syllabus
 
-- 1. PyTorch Basics: Tensors & Gradients  
-
+- Part 1: PyTorch Basics: Tensors & Gradients  
+- Part 2: Gradient Descent and Linear Regression with PyTorch  
 
 ****
 
@@ -18,7 +18,7 @@
 (base) conda activate Pytorch_For_Deep_Learning  
 (Pytorch_For_Deep_Learning) conda install -n Pytorch_For_Deep_Learning pip  
 (Pytorch_For_Deep_Learning) pip install numpy torch==1.7.0+cpu torchvision==0.8.1+cpu torchaudio==0.7.0 -f https://download.pytorch.org/whl/torch_stable.html  
-(Pytorch_For_Deep_Learning) jupyter-notebook --allow-root  
+(Pytorch_For_Deep_Learning) jupyter-notebook --allow-root &  
 (Pytorch_For_Deep_Learning) conda deactivate  
 (base) conda remove -n Pytorch_For_Deep_Learning --all  
 <br>
