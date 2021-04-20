@@ -12,6 +12,7 @@ Inspired by PyTorch Tutorial for Deep Learning Researchers, by Yunjey Choi:
 - Part 3: Working with Images & Logistic Regression in PyTorch  
 - Part 4: Training Deep Neural Networks on a GPU with PyTorch  
 - Part 5: Image Classification using Convolutional Neural Networks in PyTorch  
+- Part 6: Classifying CIFAR10 images using ResNets, Regularization and Data Augmentation in PyTorch  
 
 ****
 
