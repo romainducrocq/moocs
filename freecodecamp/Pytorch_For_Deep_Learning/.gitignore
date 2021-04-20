@@ -1,4 +1,3 @@
 .ipynb_checkpoints
 .jovianrc
-MNIST
-cifar10
+data
