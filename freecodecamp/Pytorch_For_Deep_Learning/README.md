@@ -1,6 +1,6 @@
 # PyTorch for Deep Learning 
 ## Aakash N S, freeCodeCamp
-Inspired by PyTorch Tutorial for Deep Learning Researchers, by Yunjey Choi  
+Inspired by PyTorch Tutorial for Deep Learning Researchers, by Yunjey Choi:  
 - https://github.com/yunjey/pytorch-tutorial
 
 ****
