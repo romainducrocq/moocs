@@ -9,6 +9,7 @@ Inspired by [PyTorch Tutorial for Deep Learning Researchers](https://github.com/
 - Part 2: Gradient Descent and Linear Regression with PyTorch  
 - Part 3: Working with Images & Logistic Regression in PyTorch  
 - Part 4: Training Deep Neural Networks on a GPU with PyTorch  
+- Part 5: Image Classification using Convolutional Neural Networks in PyTorch  
 
 ****
 
