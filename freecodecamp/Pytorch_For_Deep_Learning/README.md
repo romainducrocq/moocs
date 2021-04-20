@@ -1,5 +1,6 @@
 # PyTorch for Deep Learning 
 ## Aakash N S, freeCodeCamp
+Inspired by [PyTorch Tutorial for Deep Learning Researchers](https://github.com/yunjey/pytorch-tutorial), by Yunjey Choi 
 ****
 
 ### Syllabus
@@ -7,6 +8,7 @@
 - Part 1: PyTorch Basics: Tensors & Gradients  
 - Part 2: Gradient Descent and Linear Regression with PyTorch  
 - Part 3: Working with Images & Logistic Regression in PyTorch  
+- Part 4: Training Deep Neural Networks on a GPU with PyTorch  
 
 ****
 
