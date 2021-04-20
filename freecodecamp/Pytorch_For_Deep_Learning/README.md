@@ -13,8 +13,14 @@ Inspired by [PyTorch Tutorial for Deep Learning Researchers](https://github.com/
 
 ****
 
+### Google colab:
+- https://colab.research.google.com/notebooks/intro.ipynb
+- Upload: File > Upload Notebook > Github
+- Download: File > Download > Download .ipynb, Files > Content > Download
+- Delete: Runtime > Factory Reset Runtime, File > Open Notebook > Recent > Clear History
+
 ### Conda venv: 
-- Conda venv: https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/  
+- https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/  
 
 . ~/.bashrc -conda  
 <br>
