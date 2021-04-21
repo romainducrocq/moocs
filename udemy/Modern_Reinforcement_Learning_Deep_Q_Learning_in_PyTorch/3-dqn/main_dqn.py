@@ -10,7 +10,7 @@ if __name__ == "__main__":
     env = make_env('PongNoFrameskip-v4')
     best_score = -np.inf
     load_checkpoint = False
-    n_games = 10
+    n_games = 500
     agent = DQNAgent(
         gamma=0.99,
         epsilon=1.0,
