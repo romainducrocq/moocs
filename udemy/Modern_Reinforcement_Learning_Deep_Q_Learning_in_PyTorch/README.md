@@ -46,6 +46,12 @@
 - 31. Analyzing the Paper  
 - 32. Coding the Double Q Learning Agent and Analyzing Performance  
 
+**Section 6 : Dueling Network Architectures for Deep Reinforcement Learning**
+- 33. Analyzing the Paper  
+- 34. Coding the Dueling Deep Q Network  
+- 35. Coding the Dueling Deep Q Learning Agent and Analyzing Performance  
+- 36. Coding the Dueling Double Deep Q Learning Agent and Analyzing Performance  
+
 ****
 
 ### Software Requirements
