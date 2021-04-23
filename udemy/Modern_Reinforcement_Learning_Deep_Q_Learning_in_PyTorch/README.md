@@ -42,30 +42,44 @@
 - 29. Coding the Deep Q Agent: Step 4 - The Agent's Learn Function  
 - 30. Coding the Deep Q Agent: Step 5 - The Main Loop and Analyzing the Performance  
 
-**Section 5 : Deep Reinforcement Learning with Double Q Learning**
+**Section 5: Deep Reinforcement Learning with Double Q Learning**
 - 31. Analyzing the Paper  
 - 32. Coding the Double Q Learning Agent and Analyzing Performance  
 
-**Section 6 : Dueling Network Architectures for Deep Reinforcement Learning**
+**Section 6: Dueling Network Architectures for Deep Reinforcement Learning**
 - 33. Analyzing the Paper  
 - 34. Coding the Dueling Deep Q Network  
 - 35. Coding the Dueling Deep Q Learning Agent and Analyzing Performance  
 - 36. Coding the Dueling Double Deep Q Learning Agent and Analyzing Performance  
 
+**Section 7: Improving On Our Solutions**
+- 37. Implementing a Command Line Interface for Rapid Model Testing  
+- 38. Consolidating Our Code Base for Maximum Extensability  
+- 39. How to Test Our Agent and Watch it Play the Game in Real Time  
+
+**Section 8: Conclusion**
+- 40. Summarizing What We've Learned  
+
+**Section 9: Bonus Lecture**
+- 41. Bonus Video: Where to Go From Here  
+
 ****
 
 ### Software Requirements
 
-- Python 3.6
+- Python 3.6  
 > wget https://www.python.org/ftp/python/3.6.13/Python-3.6.13.tar.xz  
 > tar -xvf Python-3.6.13.tar.xz && rm -v Python-3.6.13.tar.xz && cd Python-3.6.13  
 > apt-get install build-essential sqlite3 libsqlite3-dev libbz2-dev zlib1g-dev  
 > ./configure && make && make altinstall  
 
-- venv
+- venv  
 > mkdir venv && python3.6 -m venv venv/  
 > source venv/bin/activate  
 > deactivate  
+
+- zlib1g-dev, cmake, ffmpeg  
+> sudo apt-get install zlib1g-dev cmake ffmpeg  
 
 - torch, torchvision, numpy, matplotlib, gym, box2d-py, atari-py, opencv-python  
 > (venv) pip3 install torch torchvision numpy matplotlib gym box2d-py atari-py opencv-python  
