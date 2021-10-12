@@ -1,0 +1,125 @@
+<html>
+<body>
+<canvas id='myCanvas' width='1368' height='620' style='position:absolute; left:0; top:0'></canvas>
+
+<label style="margin-top:620px;display: block;">Contenu à copier dans votre fichier map :</label> <br/>
+<input type="text" name="content" id="content" style="height:35px;width: 800px"/>
+
+<label style="margin-top:20px;display: block;">Contenu à copier dans votre fichier map_collisions :</label> <br/>
+<input type="text" name="contentCol" id="contentCol" style="height:35px;width: 800px"/>
+
+<script>
+let image = new Image();
+image.src = 'tileset.png';
+const tileWidth = 32,
+  tileHeight = 32;
+const mapRows = 18,
+  mapColumns = 25;
+const sourceWidth = 1344,
+  sourceHeight = 32;
+let tiles = new Array(mapColumns * mapRows);
+let mapHeight = mapRows * tileHeight;
+let mapWidth = mapColumns * tileWidth;
+let sourceX, sourceY, sourceTile;
+let canvas = document.getElementById('myCanvas');
+let context = canvas.getContext('2d');
+canvas.addEventListener('click', doMouseClick);
+canvas.addEventListener('mousemove', doMouseMove);
+image.addEventListener('load', redrawSource);
+// draw the grid
+for (let i = 0; i <= mapColumns; i++) {
+  context.moveTo(i * tileWidth, 0);
+  context.lineTo(i * tileWidth, mapHeight);
+}
+context.stroke();
+for (let i = 0; i <= mapRows; i++) {
+  context.moveTo(0, i * tileHeight);
+  context.lineTo(mapWidth, i * tileHeight);
+}
+context.stroke();
+ 
+function redrawSource() {
+  context.drawImage(image, 0, 0, sourceWidth, sourceHeight, 0, mapHeight, sourceWidth, sourceHeight);
+}
+ 
+function doMouseClick(e) {
+  let x = e.clientX;
+  let y = e.clientY;
+  let gridX = Math.floor(x / tileWidth) * tileWidth;
+  let gridY = Math.floor(y / tileHeight) * tileHeight;
+ 
+  if (y > mapHeight && y < (mapHeight + sourceHeight) && x < sourceWidth) { // source
+    let tileX = Math.floor(x / tileWidth);
+    let tileY = Math.floor((y - mapHeight) / tileHeight);
+    sourceTile = tileY * (sourceWidth / tileWidth) + tileX;
+    sourceX = gridX;
+    sourceY = gridY - mapHeight;
+    redrawSource();
+    drawBox();
+  }
+ 
+  if (y < mapHeight && x < mapWidth) { // target
+    context.clearRect(gridX, gridY, tileWidth, tileHeight);
+    context.drawImage(image, sourceX, sourceY, tileWidth, tileHeight, gridX, gridY, tileWidth, tileHeight);
+    let tileX = Math.floor(x / tileWidth);
+    let tileY = Math.floor(y / tileHeight);
+    let targetTile = tileY * mapColumns + tileX;
+    tiles[targetTile] = sourceTile;
+    // update the string    
+    let string = '';
+    for (let i = 0; i < mapColumns * mapRows; i++) {
+      if (tiles[i] != undefined) 
+        string = string + tiles[i];
+      else
+        string = string + '0';
+      string = string + ' ';
+    }
+    document.getElementById('content').value = string;
+
+    // Update collision string
+    let stringCol = '';
+    for (let i = 0; i < mapColumns * mapRows; i++) {
+      if (tiles[i] != undefined) 
+      {
+        if(tiles[i] > 7)
+        {
+          stringCol = stringCol + '1';
+        }
+        else
+        {
+          stringCol = stringCol + '0';
+        }
+      }
+      else
+        stringCol = stringCol + '0';
+      stringCol = stringCol + ' ';
+    }
+    document.getElementById('contentCol').value = stringCol;
+  }
+}
+ 
+function doMouseMove(e) {
+  let x = e.clientX;
+  let y = e.clientY;
+ 
+  if (y > mapHeight && y < (mapHeight + sourceHeight) && x < sourceWidth) { // source
+    let gridX = Math.floor(x / tileWidth) * tileWidth;
+    let gridY = Math.floor(y / tileHeight) * tileHeight;
+    context.clearRect(0, mapHeight, sourceWidth, sourceHeight);
+    redrawSource();
+    context.beginPath();
+    context.strokeStyle = 'blue';
+    context.rect(gridX, gridY, tileWidth, tileHeight);
+    context.stroke();
+    drawBox();
+  }
+}
+ 
+function drawBox() {
+  context.beginPath();
+  context.strokeStyle = 'red';
+  context.rect(sourceX, sourceY + mapHeight, tileWidth, tileHeight);
+  context.stroke();
+}
+</script>
+</body></html>
