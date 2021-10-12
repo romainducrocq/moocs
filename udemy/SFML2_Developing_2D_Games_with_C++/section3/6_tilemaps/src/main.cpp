@@ -1,0 +1,127 @@
+/*
+Sprite sheets available at:
+- Universal LPC Sprite Sheet
+- OpenGameArt.org
+- itch.io
+*/
+
+#include "../include/main.h"
+
+RenderWindow window;
+Input input;
+
+Texture playerTexture;
+Sprite playerSprite;
+
+Map tilemap;
+
+enum AnimPlayer{ Down, Right, Up, Left, DownAtk, RightAtk, UpAtk, LeftAtk };
+Vector2i animPlayerSprite(0, Down);
+Clock animPlayerClock;
+bool animPlayerIdle = true;
+bool animPlayerReset = false;
+
+int levelTiles[MAP_COL * MAP_ROW];
+
+FloatRect playerHitbox;
+
+int main(){
+    window.create(VideoMode(WIN_WIDTH,WIN_HEIGHT,32), "MY SFML GAME", Style::Default);
+    window.setVerticalSyncEnabled(true);
+
+    if(!playerTexture.loadFromFile(RES_DIR + "sprite/player_sprite_sheet.png")){
+        LOG("[ERROR] Failed load texture ...");
+    }
+    playerSprite.setTexture(playerTexture);
+
+    string str;
+    ifstream ifs(RES_DIR + "tilemap/map" + to_string(MAP_N) + ".txt");
+    for(int i = 0; i < MAP_ROW; i++){
+        if(!getline(ifs, str)) { break; }
+        vector<string> vstr = explode(str, ' ');
+        for(int j = 0; j < MAP_COL; j++){
+            levelTiles[j + i * MAP_COL] = stoi(vstr[j]);
+        }
+    }
+
+    if(!tilemap.load(RES_DIR + "tileset/tileset.png", Vector2u(SPRITE_SIZE, SPRITE_SIZE), levelTiles, MAP_COL, MAP_ROW)){
+        LOG("[ERROR] Failed load tilemap ...");
+    }
+
+    while(window.isOpen()){
+        Event event;
+        while(window.pollEvent(event)){
+            input.inputHandler(event, window);
+        }
+        checkButton();
+        animPlayer();
+
+        window.clear(Color::Black);
+
+        window.draw(tilemap);
+        window.draw(playerSprite);
+
+        window.display();
+    }
+
+    return 0;
+}
+
+void checkButton(){
+    if(!animPlayerReset){
+        if(input.getButton().down == true){
+            animPlayerSprite.y = Down; 
+            playerSprite.move(0, MOVE_SPEED);
+            animPlayerIdle = false;
+        }else if(input.getButton().right == true){
+            animPlayerSprite.y = Right; 
+            playerSprite.move(MOVE_SPEED, 0);
+            animPlayerIdle = false;
+        }else if(input.getButton().up == true){
+            animPlayerSprite.y = Up; 
+            playerSprite.move(0, -MOVE_SPEED);
+            animPlayerIdle = false;
+        }else if(input.getButton().left == true){
+            animPlayerSprite.y = Left; 
+            playerSprite.move(-MOVE_SPEED, 0);
+            animPlayerIdle = false;
+        }else{
+            animPlayerIdle = true;
+        }
+        if(input.getButton().attack == true){
+            animPlayerReset = true;
+            animPlayerSprite.x = 0;
+            animPlayerSprite.y += 4;
+        }
+    }
+    if(input.getButton().escape == true){
+        window.close();
+    }
+}
+
+void animPlayer(){
+    playerSprite.setTextureRect(IntRect(animPlayerSprite.x * SPRITE_SIZE, animPlayerSprite.y * SPRITE_SIZE, SPRITE_SIZE, SPRITE_SIZE));
+    if(animPlayerClock.getElapsedTime().asSeconds() > 0.1f){
+        if(animPlayerSprite.x * SPRITE_SIZE >= (int)playerTexture.getSize().x - SPRITE_SIZE){      
+            animPlayerSprite.x = 0;
+            if(animPlayerReset){
+                animPlayerReset = false;
+                animPlayerSprite.y -= 4;
+            }
+        }else if(!animPlayerIdle || animPlayerReset){
+            animPlayerSprite.x++;
+        }
+        animPlayerClock.restart();
+    }
+}
+
+vector<string> explode(const string& s, char delim){
+    vector<string> result;
+    istringstream iss(s);
+
+    for(string token; getline(iss, token, delim); ){
+        result.push_back(move(token));
+    }
+
+    return result;
+}
